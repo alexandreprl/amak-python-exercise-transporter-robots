@@ -1,2 +1,2 @@
-amak @ git+https://github.com/alexandreprl/AMAK-Python.git@f8ca4f039469379612512a16633f47aea7553c13
+amak @ git+https://github.com/alexandreprl/AMAK-Python.git@0137ec45bc5177903c9ccbdcff87c6b224407224
 pygame==2.6.1

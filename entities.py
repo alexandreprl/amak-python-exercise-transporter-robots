@@ -12,9 +12,9 @@ class RobotAgent(AgentEntity):
         self.on_grid_position = on_grid_position
         self.held_box = None
         super().__init__(mas, grid_to_display_position(self.on_grid_position), "red")
-        self.set_grid_position(on_grid_position)
+        self.set_on_grid_position(on_grid_position)
 
-    def set_grid_position(self, on_grid_position):
+    def set_on_grid_position(self, on_grid_position):
         g = self.amas.environment.grid[self.on_grid_position[1]][self.on_grid_position[0]]
         if self in g:
             g.remove(self)
@@ -25,17 +25,18 @@ class RobotAgent(AgentEntity):
     def move_randomly(self):
         new_position = None
         max_attempt = 10
-        while max_attempt > 0 and (not self.amas.environment.is_on_grid_position_valid(
-                new_position) or self.amas.environment.is_on_grid_position_occupied_by_robot(new_position)):
+        while (max_attempt > 0 and (not self.amas.environment.is_on_grid_position_valid(new_position) or
+                                    self.amas.environment.is_on_grid_position_occupied_by_robot(new_position)) or
+               self.amas.environment.is_on_grid_position_wall(new_position)):
             direction = choice([(1, 0), (-1, 0), (0, 1), (0, -1)])
             new_position = (self.on_grid_position[0] + direction[0], self.on_grid_position[1] + direction[1])
             max_attempt -= 1
         if max_attempt > 0:
-            self.set_grid_position(new_position)
+            self.set_on_grid_position(new_position)
 
     def die(self):
         self.destroy()
-        self.amas.environment.grid[self.on_grid_position[1]][self.on_grid_position[0]].remove(self)
+        self.amas.environment.remove_entity(self)
 
     def try_to_take_box(self):
         if self.held_box is not None:

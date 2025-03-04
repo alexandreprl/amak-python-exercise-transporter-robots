@@ -57,8 +57,8 @@ The two areas are separated by a wall. To go from one side of the wall to the ot
 
 ### Prerequisites
 
-* Fork the project
-* Clone the forked version
+* Click on "Use this template" then "Create a new repository"
+* Clone your new repository
 * Create a virtual environment `python -m venv .venv` (Optional)
 * Activate the virtual environment `source .venv/bin/activate` (Optional)
 * Install dependencies `pip install -r requirements.txt`
@@ -66,8 +66,13 @@ The two areas are separated by a wall. To go from one side of the wall to the ot
 
 ### Exercise
 
-The class __RobotAgent__ contains the behavior of a transporter robot. A basic version has been implemented in which they randomly move, pick a box if there is one and drop it if they are in the drop zone.
-Implement a cooperative behavior in which the robots coordinate to move the boxes to the drop zone as fast as possible.
+The class __RobotAgent__ contains the behavior of a transporter robot. A basic version has been implemented in which they randomly move, pick a box if there is one and drop it if they are in the drop zone. Implement a cooperative behavior in which the robots coordinate to move the boxes to the drop zone as fast as possible.
+
+- Launch the project and observe the behavior of the robots
+- Implement a cooperative behavior using stigmergy (communication through the environment)
+- Implement a cooperative behavior using communication between close robots
+
+Note: The implemented behaviors should work on room 1 and 2. The extra corridor in room 2 should be used to improve the performance of the system. 
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
